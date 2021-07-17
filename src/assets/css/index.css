@@ -31,7 +31,7 @@ h6,
 }
 
 a {
-    color: #3bc8e7;
+    color: #fff;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
     -webkit-transition: all 0.3s ease-in-out;
@@ -65,6 +65,14 @@ button:focus {
 
 .d-hide {
     display: none
+}
+
+.mt-6 {
+    margin-top: 3.5rem!important;
+}
+
+.mt-7 {
+    margin-top: 4rem!important;
 }
 
 @media only screen and (max-width: 576px) {

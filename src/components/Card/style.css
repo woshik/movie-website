@@ -1,0 +1,74 @@
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    justify-content: flex-start;
+    overflow: hidden;
+    margin-bottom: 36px;
+    user-select: none;
+}
+
+.movie-card a img {
+    margin-right: 0;
+    margin-bottom: 15px;
+    border-radius: 14px;
+    transition: all 0.5s ease-out;
+    width: 100%;
+}
+
+.movie-card .favorite {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    background: rgba(0, 0, 0, .3);
+    text-align: center;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 6px;
+    right: 6px;
+    z-index: 99999;
+}
+
+
+.movie-card:hover img {
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    -webkit-opacity: 0.5;
+    opacity: 0.5;
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+    filter: alpha(opacity=50);
+}
+
+.movie-card:hover h6 a {
+    color: #3bc8e7;
+}
+
+.movie-info h6 a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.movie-info .rate {
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: 300;
+    text-transform: none;
+    line-height: 24px !important;
+}
+
+.movie-info .rate svg {
+    color: #f5b50a;
+    font-size: 22px;
+    margin: 0 5px 5px 0;
+}
+
+.movie-info .rate span {
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 400;
+}
