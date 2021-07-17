@@ -1,0 +1,16 @@
+.banner {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title h2 {
+    font-size: 3.5rem;
+}
+
+h2, h3 {
+   color: #fff; 
+}
