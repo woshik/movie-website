@@ -1,0 +1,21 @@
+.search-box-wrapper input {
+    display: inline-block;
+    height: 40px;
+    padding: 0px 20px;
+    font-size: 15px;
+    color: #777;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-box-wrapper button {
+    position: absolute;
+    background-color: #3bc8e7;
+    border-radius: 0px 5px 5px 0px;
+    padding: 0px 18px;
+    cursor: pointer;
+}
+
+.search-box-wrapper button img {
+    width: 18px;
+}
