@@ -13,8 +13,14 @@ import Card from '../Card';
 // assets
 import './style.css';
 
-const Category = ({ genre, movieCountPerCategory }) => {
+const Category = ({
+  genre,
+  movieCountPerGenre,
+  viewMore,
+  queryParams,
+}) => {
   const [movies, setMovies] = useState([]);
+
   const dispatch = useDispatch();
 
   const { ref, inView } = useInView({
@@ -25,15 +31,21 @@ const Category = ({ genre, movieCountPerCategory }) => {
   // get movie API data
   const handleMovieAPIData = (data) => {
     // trim down data
-    setMovies(data.slice(0, movieCountPerCategory));
+    setMovies(data.slice(0, movieCountPerGenre));
   };
 
   // only trigger the API call when category in viewport
   useEffect(() => {
     if (inView) {
-      dispatch(fetchMovieList({
-        with_genres: genre.id,
-      }, handleMovieAPIData));
+      dispatch(
+        fetchMovieList(
+          {
+            ...queryParams,
+            with_genres: genre.id,
+          },
+          handleMovieAPIData,
+        ),
+      );
     }
   }, [inView]);
 
@@ -42,9 +54,11 @@ const Category = ({ genre, movieCountPerCategory }) => {
       <div className="row" ref={ref}>
         <div className="genre-heading">
           <h1>{genre.name}</h1>
-          <span className="view-all">
-            <Link to={`genre/${genre.id}`}>View More</Link>
-          </span>
+          {viewMore ? (
+            <span className="view-all">
+              <Link to={`genre/${genre.id}`}>View More</Link>
+            </span>
+          ) : null}
         </div>
       </div>
       <div className="row">
@@ -63,11 +77,15 @@ Category.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
-  movieCountPerCategory: PropTypes.number,
+  viewMore: PropTypes.bool,
+  movieCountPerGenre: PropTypes.number,
+  queryParams: PropTypes.object,
 };
 
 Category.defaultProps = {
-  movieCountPerCategory: 5,
+  movieCountPerGenre: 5,
+  viewMore: true,
+  queryParams: {},
 };
 
 export default Category;
