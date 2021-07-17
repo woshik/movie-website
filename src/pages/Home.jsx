@@ -17,7 +17,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // if genre data already exist not need the API call every time
+    // if genre data already exist, don't need the API call every time
     if (genreList.length === 0) {
       dispatch(fetchGenreList());
     }

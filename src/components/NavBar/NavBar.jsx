@@ -1,11 +1,19 @@
 import { useState, memo } from 'react';
 import { Link } from 'react-router-dom';
+
+// redux
+import { useSelector } from 'react-redux';
+
+// components
 import SearchBar from '../SearchBar';
+
+// assets
 import closeIcon from '../../assets/images/icon/close.svg';
 import searchIcon from '../../assets/images/icon/search.svg';
 import './style.css';
 
 const NavBar = () => {
+  const watchListIds = useSelector(({ watchList }) => watchList.ids);
   const [mobileSearchBarShow, setMobileSearchBarShow] = useState(false);
 
   const handleMobileSearchClick = () => {
@@ -35,6 +43,9 @@ const NavBar = () => {
             </button>
             <Link to="/watchlist" className="btn nav-button">
               Watchlist
+              <span className="badge bg-danger custom-badge ms-2">
+                {watchListIds.length}
+              </span>
             </Link>
           </div>
         </div>

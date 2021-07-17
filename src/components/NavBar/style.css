@@ -58,3 +58,9 @@
 .top-78 {
     top: 78px;
 }
+
+.custom-badge {
+    top: -2px !important;
+    font-size: .80em !important;
+    border-radius: 100px;
+}
