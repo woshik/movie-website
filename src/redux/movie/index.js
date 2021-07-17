@@ -63,7 +63,7 @@ const movieReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-const fetchMovieList = (params) => {
+const fetchMovieList = (params, callback) => {
   function requestSent() {
     return {
       type: MOVIE_REQUEST_SENT,
@@ -102,7 +102,12 @@ const fetchMovieList = (params) => {
       return;
     }
 
-    dispatch(success(data?.results ?? []));
+    const result = data?.results ?? [];
+
+    dispatch(success(result));
+
+    // return data to the component component
+    callback(result);
   };
 };
 

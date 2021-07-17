@@ -11,7 +11,7 @@ const watchList = lazy(() => import('./pages/WatchList'));
 
 const BaseRouter = () => (
   <Switch>
-    <Route path="/movies/:id" component={movieDetail} />
+    <Route path="/movie/:id" component={movieDetail} />
     <Route path="/genre/:id" component={genre} />
     <Route path="/movies" component={home} />
     <Route path="/watchlist" component={watchList} />

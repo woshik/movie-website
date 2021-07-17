@@ -1,7 +1,9 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import PropTypes from 'prop-types';
+
+// redux
 import { useDispatch } from 'react-redux';
 import { fetchMovieList } from '../../redux/movie';
 
@@ -11,7 +13,8 @@ import Card from '../Card';
 // assets
 import './style.css';
 
-const Category = ({ genre }) => {
+const Category = ({ genre, movieCountPerCategory }) => {
+  const [movies, setMovies] = useState([]);
   const dispatch = useDispatch();
 
   const { ref, inView } = useInView({
@@ -19,12 +22,18 @@ const Category = ({ genre }) => {
     triggerOnce: true,
   });
 
+  // get movie API data
+  const handleMovieAPIData = (data) => {
+    // trim down data
+    setMovies(data.slice(0, movieCountPerCategory));
+  };
+
   // only trigger the API call when category in viewport
   useEffect(() => {
     if (inView) {
       dispatch(fetchMovieList({
         with_genres: genre.id,
-      }));
+      }, handleMovieAPIData));
     }
   }, [inView]);
 
@@ -39,21 +48,11 @@ const Category = ({ genre }) => {
         </div>
       </div>
       <div className="row">
-        <div className="col-6 col-sm-4 col-lg-3 col-xl-2">
-          <Card />
-        </div>
-        <div className="col-6 col-sm-4 col-lg-3 col-xl-2">
-          <Card />
-        </div>
-        <div className="col-6 col-sm-4 col-lg-3 col-xl-2">
-          <Card />
-        </div>
-        <div className="col-6 col-sm-4 col-lg-3 col-xl-2">
-          <Card />
-        </div>
-        <div className="col-6 col-sm-4 col-lg-3 col-xl-2">
-          <Card />
-        </div>
+        {movies.map((movie) => (
+          <div key={movie.id} className="col-6 col-sm-4 col-lg-3 col-xl-2">
+            <Card data={movie} />
+          </div>
+        ))}
       </div>
     </>
   );
@@ -64,6 +63,11 @@ Category.propTypes = {
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
   }).isRequired,
+  movieCountPerCategory: PropTypes.number,
+};
+
+Category.defaultProps = {
+  movieCountPerCategory: 5,
 };
 
 export default Category;
