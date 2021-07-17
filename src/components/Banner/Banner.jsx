@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 
@@ -29,4 +30,4 @@ Banner.defaultProps = {
   subTitle: '',
 };
 
-export default Banner;
+export default memo(Banner);
