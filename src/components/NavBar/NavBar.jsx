@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar';
 import closeIcon from '../../assets/images/icon/close.svg';
 import searchIcon from '../../assets/images/icon/search.svg';
-
 import './style.css';
 
 const NavBar = () => {
@@ -41,7 +40,8 @@ const NavBar = () => {
         </div>
       </nav>
       <div
-        className={`search-mobile-wrapper d-flex align-items-center fixed-top w-100 ${mobileSearchBarShow ? 'top-78' : ''}`}
+        className="search-mobile-wrapper d-flex align-items-center fixed-top w-100"
+        style={{ top: `${mobileSearchBarShow ? 75 : 0}px` }}
       >
         <SearchBar />
       </div>

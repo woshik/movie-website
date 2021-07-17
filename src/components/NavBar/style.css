@@ -45,7 +45,7 @@
 .search-mobile-wrapper {
     height: 75px;
     padding: 0 15px;
-    z-index: -999;
+    z-index: 1;
     background-color: #1b2039;
 
     transition: top 0.4s ease-in-out;
