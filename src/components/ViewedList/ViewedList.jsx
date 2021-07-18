@@ -16,6 +16,8 @@ const ViewedList = ({ movieCount, clearData }) => {
 
   const dispatch = useDispatch();
 
+  const viewedKey = Object.keys(viewedData);
+
   const handleClearAll = () => {
     dispatch(removeFromViewList());
   };
@@ -24,36 +26,42 @@ const ViewedList = ({ movieCount, clearData }) => {
     <>
       <div className="row">
         <div className="genre-heading">
-          {clearData || Object.keys(viewedData).length < 5 ? (
-            <span
-              className="clear-all"
-              role="button"
-              tabIndex="-1"
-              onClick={handleClearAll}
-              onKeyPress={handleClearAll}
-            >
-              Clear All
+          <h1>Recently Viewed</h1>
+          {viewedKey.length ? (
+            <span>
+              {clearData || viewedKey.length < movieCount ? (
+                <span
+                  className="clear-all"
+                  role="button"
+                  tabIndex="-1"
+                  onClick={handleClearAll}
+                  onKeyPress={handleClearAll}
+                >
+                  Clear All
+                </span>
+              ) : (
+                <span className="view-all">
+                  <Link to="/viewed">View All</Link>
+                </span>
+              )}
             </span>
-          ) : (
-            <>
-              <h1>Recently Viewed</h1>
-              <span className="view-all">
-                <Link to="/viewed">View All</Link>
-              </span>
-            </>
-          )}
+          ) : null}
         </div>
       </div>
-      <div className="row">
-        {(movieCount === -1
-          ? Object.keys(viewedData)
-          : Object.keys(viewedData).splice(0, movieCount)
-        ).map((key) => (
-          <div key={key} className="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <MovieCard data={viewedData[key]} />
-          </div>
-        ))}
-      </div>
+      {viewedKey.length ? (
+        <div className="row">
+          {(movieCount === -1
+            ? viewedKey
+            : viewedKey.splice(0, movieCount)
+          ).map((key) => (
+            <div key={key} className="col-6 col-sm-4 col-lg-3 col-xl-2">
+              <MovieCard data={viewedData[key]} />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>You have no recently viewed movies</p>
+      )}
     </>
   );
 };
