@@ -84,22 +84,19 @@ const fetchMovieData = (movieId) => {
 
   return async (dispatch) => {
     dispatch(requestSent());
-    const [movieData, movieError] = await movieService.getById(movieId);
 
-    if (movieError) {
-      dispatch(requestComplete());
-      dispatch(failure(movieError));
+    const [result, error] = await movieService.getById(movieId, {
+      append_to_response: 'videos,credits,recommendations',
+    });
+
+    if (error) {
+      dispatch(failure(error));
       return;
     }
 
-    const [creditData] = await movieService.getCredits(movieId);
-
-    movieData.cast = creditData?.cast || [];
-    movieData.crew = creditData?.crew || [];
-
     dispatch(requestComplete());
 
-    dispatch(success(movieData));
+    dispatch(success(result));
   };
 };
 
