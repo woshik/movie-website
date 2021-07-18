@@ -7,6 +7,7 @@ const GENRE_REQUEST_COMPLETE = 'GENRE_REQUEST_COMPLETE';
 const GENRE_REQUEST_SUCCESS = 'GENRE_REQUEST_SUCCESS';
 const GENRE_REQUEST_FAILURE = 'GENRE_REQUEST_FAILURE';
 const CLEAR_ERROR = 'CLEAR_ERROR';
+const SET_PAGE_SIZE = 'SET_PAGE_SIZE';
 
 const initialState = {
   list: [],
@@ -36,17 +37,28 @@ const genreReducer = (state = initialState, { type, payload }) => {
         success: true,
         error: null,
       };
+
     case GENRE_REQUEST_FAILURE:
       return {
         ...state,
         success: false,
         error: payload,
       };
+
     case CLEAR_ERROR:
       return {
         ...state,
         error: null,
       };
+
+    case SET_PAGE_SIZE:
+      return {
+        ...state,
+        list: state.list.map((item) => (item.id === payload.genreId
+          ? { ...item, total_pages: payload.totalPages }
+          : { ...item })),
+      };
+
     default:
       return {
         ...state,
@@ -97,6 +109,11 @@ const fetchGenreList = () => {
   };
 };
 
-export { fetchGenreList };
+const setPageSize = (genreId, totalPages) => ({
+  type: SET_PAGE_SIZE,
+  payload: { genreId, totalPages },
+});
+
+export { fetchGenreList, setPageSize };
 
 export default genreReducer;

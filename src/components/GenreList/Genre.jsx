@@ -1,51 +1,67 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { useInView } from 'react-intersection-observer';
 import PropTypes from 'prop-types';
 
 // redux
 import { useDispatch } from 'react-redux';
-import { fetchMovieList } from '../../redux/movie';
+import { setPageSize } from '../../redux/genre';
+
+// service
+import DiscoverService from '../../services/discover.service';
 
 // components
-import Card from '../Card';
+import MovieCard from '../MovieCard';
 
 // assets
 import './style.css';
 
-const Category = ({
-  genre,
-  movieCountPerGenre,
-  viewMore,
-  queryParams,
-}) => {
-  const [movies, setMovies] = useState([]);
+const discoverService = new DiscoverService();
 
+const Category = ({
+  genre, movieCountPerGenre, viewMore, queryParams,
+}) => {
   const dispatch = useDispatch();
+
+  // don't need to regenerate demo list every re-render
+  const demoData = useMemo(
+    () => Array(movieCountPerGenre)
+      .fill({})
+      .map((_, i) => ({ id: i, demo: true })),
+    [movieCountPerGenre],
+  );
+
+  const [movies, setMovies] = useState(demoData);
 
   const { ref, inView } = useInView({
     threshold: 0,
     triggerOnce: true,
   });
 
-  // get movie API data
-  const handleMovieAPIData = (data) => {
-    // trim down data
-    setMovies(data.slice(0, movieCountPerGenre));
-  };
-
   // only trigger the API call when category in viewport
-  useEffect(() => {
+  useEffect(async () => {
     if (inView) {
-      dispatch(
-        fetchMovieList(
-          {
-            ...queryParams,
-            with_genres: genre.id,
-          },
-          handleMovieAPIData,
-        ),
-      );
+      // get a random number. if total pages not found set this 1
+      // otherwise pick a random number range of total_pages
+      const randomPage = Math.floor(Math.random() * (genre?.total_pages || 1)) + 1;
+
+      const [data, error] = await discoverService.get({
+        with_genres: genre.id,
+        page: randomPage,
+        ...queryParams,
+      });
+
+      if (error) {
+        return;
+      }
+
+      // if total_page not fount set the result
+      if (!genre?.total_pages) {
+        // set total size so that next time get different movie result
+        dispatch(setPageSize(genre.id, data.total_pages));
+      }
+
+      setMovies(data?.results?.slice(0, movieCountPerGenre) ?? demoData);
     }
   }, [inView]);
 
@@ -64,7 +80,7 @@ const Category = ({
       <div className="row">
         {movies.map((movie) => (
           <div key={movie.id} className="col-6 col-sm-4 col-lg-3 col-xl-2">
-            <Card data={movie} />
+            <MovieCard data={movie} />
           </div>
         ))}
       </div>
@@ -76,6 +92,7 @@ Category.propTypes = {
   genre: PropTypes.shape({
     id: PropTypes.number.isRequired,
     name: PropTypes.string.isRequired,
+    total_pages: PropTypes.number,
   }).isRequired,
   viewMore: PropTypes.bool,
   movieCountPerGenre: PropTypes.number,
