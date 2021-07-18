@@ -1,4 +1,19 @@
-# Movie Website
+<h1 align='center'>
+    The Movie Database
+</h1>
+
+
+## Demo
+[http://18.209.226.53:5000/](http://18.209.226.53:5000/)
+
+## Tools and Technologies
+
+- Node.js (v14.16.0 LTS)
+- Express (v4.17.1)
+- mongodb (v4.2.8)
+- React (v17.0.2)
+
+
 
 ## Available Scripts
 
@@ -15,7 +30,6 @@ You will also see any lint errors in the console.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
@@ -25,4 +39,33 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `npm run lint`
+
+See the eslint warning and error.
+
+### `npm run lint:fix`
+
+To fix eslint warning and error.
+
+
+## Project Configuration & Install (Development)
+
+1. Run `npm i` command on the project directory to install all packages.
+2. Copy `.sample.env` file and past it in this directory as `.env.development`.
+3. Set the `REACT_APP_API_KEY` in the `.env.development` file. You will find the API and key information here, [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api)
+4. Set the `REACT_APP_BASE_URL` as you origin server path.
+5. Run `npm start`, By default project will start on [http://localhost:3000](http://localhost:3000) 
+
+## Project Configuration & Install (Production)
+
+1. Run `npm i` command on the project directory to install all packages.
+2. Copy `.sample.env` file and past it in this directory as `.env.production`.
+3. Set the `REACT_APP_API_KEY` in the `.env.production` file. You will find the API and key information here, [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api) 
+4. Set the `REACT_APP_BASE_URL` as you origin server path.
+5. Install serve or pm2 package. `npm install -g serve` OR `npm install -g pm2`
+6. Run one of those commend from your project directory, based on your package installation.
+    - If you using serve package run this commend `serve -s build`. By default Server will run on 5000 port on your server.
+    - If you using pm2 page run this commend `pm2 serve ./build 5000 --spa`. By default Server will run on 5000 port on your server.
+
+
+

@@ -1,0 +1,14 @@
+.favorite {
+    width: 34px;
+    height: 34px;
+    background: rgba(0, 0, 0, .3);
+    text-align: center;
+    border-radius: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fill-red {
+    color: red;
+}

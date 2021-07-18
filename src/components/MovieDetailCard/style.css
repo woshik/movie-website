@@ -1,0 +1,62 @@
+.transformers-box {
+    padding: 35px;
+    box-shadow: 0 0 20px #000000;
+    position: relative;
+    min-height: 400px;
+}
+
+.favorite-icon {
+    position: absolute;
+    top: 11px;
+    right: 11px;
+}
+
+.movie-title {
+    color: #fff;
+}
+
+.transformers-content {
+    position: relative;
+}
+
+.transformers-content>p {
+    color: #dfdfdf;
+    margin: 12px 0 30px;
+    position: relative;
+    padding-left: 70px;
+}
+
+.poster-image {
+    width: 80%;
+}
+
+.transformers-content>p::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    top: 0;
+    width: 55px;
+    height: 2px;
+    margin: auto;
+    background: #3bc8e7;
+}
+
+.transformers-left {
+    color: #3bc8e7;
+    min-width: 120px;
+}
+
+.transformers-right {
+    color: #dfdfdf;
+}
+
+.transformers-content ul {
+    padding: 0;
+}
+
+.transformers-content ul li {
+    display: flex;
+    margin-top: 12px;
+    font-weight: 300;
+}

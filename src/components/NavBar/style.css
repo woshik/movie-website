@@ -1,0 +1,70 @@
+.nav-style {
+    background-color: #1b2039;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: #fff;
+    font-weight: 700;
+}
+
+.nav-button {
+    background-color: #3bc8e7;
+    color: #fff;
+    border-radius: 20px;
+    width: 140px;
+    transition: all 0.4s ease-in-out;
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -ms-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+}
+
+.nav-button:hover {
+    color: #fff;
+    box-shadow: 0px 0px 20px 0px #3bc8e7;
+}
+
+.search-box-wrapper input,
+.search-box-wrapper button {
+    box-shadow: none !important;
+    outline: 0;
+}
+
+
+
+.mobile-search-btn {
+    background-color: #3bc8e7;
+    margin-right: 10px;
+    border-radius: 50px;
+    width: 38px;
+    height: 38px;
+}
+
+
+.search-mobile-wrapper {
+    height: 75px;
+    padding: 0 15px;
+    z-index: 20;
+    background-color: #1b2039;
+    transition: top 0.4s ease-in-out;
+    -webkit-transition: top 0.4s ease-in-out;
+    -moz-transition: top 0.4s ease-in-out;
+    -ms-transition: top 0.4s ease-in-out;
+    -o-transition: top 0.4s ease-in-out;
+}
+
+.top-78 {
+    top: 78px;
+}
+
+.custom-badge {
+    top: -2px !important;
+    font-size: .80em !important;
+    border-radius: 100px;
+}
+
+.bg-watchlist-color {
+    background-color: #2b9cb5 !important;
+}

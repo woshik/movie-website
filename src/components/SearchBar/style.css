@@ -1,0 +1,48 @@
+.search-box-wrapper {
+    position: relative;
+}
+
+
+.search-box-wrapper input {
+    display: inline-block;
+    height: 40px;
+    padding: 0px 20px;
+    font-size: 15px;
+    color: #777;
+    border: none;
+    border-radius: 12px;
+    
+}
+
+.search-box-wrapper .movie-result {
+    position: absolute;
+    top: 41px;
+    left: 10px;
+    right: 13px;
+    z-index: 20;
+}
+
+.movie-result ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+.movie-result ul li {
+    background-color: #efefef;
+    border-bottom: 1px solid #000;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+
+.movie-result ul li a {
+    color: #000;
+    font-weight: 700;
+    width: 100%;
+    padding: 10px;
+}
+
+.movie-result ul li img {
+    width: 25px;
+}
