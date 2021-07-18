@@ -8,7 +8,7 @@ import Loader from './components/Loader';
 const App = () => (
   <Provider store={store}>
     <Suspense fallback={<Loader />}>
-      <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
+      <BrowserRouter>
         <BaseRouter />
       </BrowserRouter>
     </Suspense>

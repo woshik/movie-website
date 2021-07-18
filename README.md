@@ -52,16 +52,18 @@ To fix eslint warning and error.
 
 1. Run `npm i` command on the project directory to install all packages.
 2. Copy `.sample.env` file and past it in this directory as `.env.development`.
-3. Set the `REACT_APP_API_KEY` in the `.env.development` file. You will find the API and key information here, [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api) 
-4. Run `npm start`, By default project will start on [http://localhost:3000](http://localhost:3000) 
+3. Set the `REACT_APP_API_KEY` in the `.env.development` file. You will find the API and key information here, [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api)
+4. Set the `REACT_APP_BASE_URL` as you origin server path.
+5. Run `npm start`, By default project will start on [http://localhost:3000](http://localhost:3000) 
 
 ## Project Configuration & Install (Production)
 
 1. Run `npm i` command on the project directory to install all packages.
 2. Copy `.sample.env` file and past it in this directory as `.env.production`.
 3. Set the `REACT_APP_API_KEY` in the `.env.production` file. You will find the API and key information here, [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api) 
-4. Install serve or pm2 package. `npm install -g serve` OR `npm install -g pm2`
-5. Run one of those commend from your project directory, based on your package installation.
+4. Set the `REACT_APP_BASE_URL` as you origin server path.
+5. Install serve or pm2 package. `npm install -g serve` OR `npm install -g pm2`
+6. Run one of those commend from your project directory, based on your package installation.
     - If you using serve package run this commend `serve -s build`. By default Server will run on 5000 port on your server.
     - If you using pm2 page run this commend `pm2 serve ./build 5000 --spa`. By default Server will run on 5000 port on your server.
 
