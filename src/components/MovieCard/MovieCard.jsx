@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Favorite from '../Favorite';
 
 // assets
+import { imagePath } from '../../redux/static';
 import defaultPoster from '../../assets/images/default-poster.jpg';
 import './style.css';
 
@@ -12,7 +13,7 @@ const Card = ({ data }) => (
   <div className="movie-card">
     {(data.id && !data.demo) ? <Favorite movieData={data} /> : null }
     <Link to={(data.id && !data.demo) ? `/movie/${data.id}` : '/movies'}>
-      <img src={data.poster_path ? `https://image.tmdb.org/t/p/w300${data.poster_path}` : defaultPoster} alt={data.title || 'movie poster'} />
+      <img src={data.poster_path ? `${imagePath}w300${data.poster_path}` : defaultPoster} alt={data.title || 'movie poster'} />
     </Link>
     <div className="movie-info">
       <h6>

@@ -1,16 +1,17 @@
 import PropTypes from 'prop-types';
 
 // assets
+import { imagePath } from '../../redux/static';
 import defaultPoster from '../../assets/images/default-poster.jpg';
 import './style.css';
 
 const MovieDetailCard = ({ movieDetail }) => (
   <div className="transformers-box">
-    <div className="row justify-content-center align-items-center">
+    <div className="row justify-content-center">
       <div className="col-lg-5 text-lg-left text-center mb-5">
         <img
           className="poster-image"
-          src={movieDetail.poster_path ? `https://image.tmdb.org/t/p/w300${movieDetail.poster_path}` : defaultPoster}
+          src={movieDetail.poster_path ? `${imagePath}w300${movieDetail.poster_path}` : defaultPoster}
           alt={movieDetail.title}
         />
       </div>

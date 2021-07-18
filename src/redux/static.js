@@ -3,4 +3,4 @@ export const movieSortingList = [
   { title: 'Top Rated', value: 'vote_average.desc' },
 ];
 
-export default movieSortingList;
+export const imagePath = process.env.REACT_APP_IMAGE_PATH;

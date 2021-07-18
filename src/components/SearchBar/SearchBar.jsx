@@ -12,6 +12,7 @@ import useOutSideClick from '../../hook/useOutSideClick';
 import { cancelRequest } from '../../utils/request';
 
 // assets
+import { imagePath } from '../../redux/static';
 import defaultPoster from '../../assets/images/default-poster.jpg';
 import './style.css';
 
@@ -65,7 +66,7 @@ const SearchBar = ({ isSearchBarOpen }) => {
             {searchMovies.map((movie) => (
               <li key={movie.id}>
                 <Link to={`/movie/${movie.id}`}>
-                  <img src={movie.poster_path ? `https://image.tmdb.org/t/p/w300${movie.poster_path}` : defaultPoster} alt={movie.title || 'movie poster'} />
+                  <img src={movie.poster_path ? `${imagePath}w300${movie.poster_path}` : defaultPoster} alt={movie.title || 'movie poster'} />
                   <span className="ms-2">{movie.title}</span>
                 </Link>
               </li>
