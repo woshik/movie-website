@@ -75,6 +75,10 @@ button:focus {
     margin-top: 4rem !important;
 }
 
+.mb-7 {
+    margin-bottom: 4rem !important;
+}
+
 .banner-less-margin {
     margin-top: 10rem !important;
 }

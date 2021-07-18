@@ -12,7 +12,7 @@ const Viewed = () => (
       <Banner
         height="320px"
         bannerImageSRC={bannerImage}
-        title="Recently Viewed"
+        title="Movies You Visited Most"
       />
       <div className="container">
         <div className="mt-6">
