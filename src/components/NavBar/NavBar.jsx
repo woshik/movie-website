@@ -43,7 +43,7 @@ const NavBar = () => {
             </button>
             <Link to="/watchlist" className="btn nav-button">
               Watchlist
-              <span className="badge bg-danger custom-badge ms-2">
+              <span className="badge bg-watchlist-color custom-badge ms-2">
                 {Object.keys(watchListData).length}
               </span>
             </Link>

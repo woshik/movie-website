@@ -64,3 +64,7 @@
     font-size: .80em !important;
     border-radius: 100px;
 }
+
+.bg-watchlist-color {
+    background-color: #2b9cb5 !important;
+}
