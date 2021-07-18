@@ -50,11 +50,11 @@ button:focus {
     outline: none;
 }
 
-.tmdb-color {
+.cmdb-color {
     color: #3bc8e7 !important
 }
 
-.tmdb-bg-color {
+.cmdb-bg-color {
     background-color: #3bc8e7 !important
 }
 

@@ -25,7 +25,7 @@ const NavBar = () => {
       <nav className="navbar nav-style fixed-top">
         <div className="container">
           <Link to="/movies" className="logo">
-            TMDB
+            CMDb
           </Link>
           <div className="w-50 d-sm-hide">
             <SearchBar />
