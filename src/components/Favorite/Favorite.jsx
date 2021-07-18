@@ -8,8 +8,8 @@ import { addToWatchList, removeFromWatchList } from '../../redux/watchList';
 import './style.css';
 
 const Favorite = ({ movieData }) => {
-  // get watch list ids
-  const favoriteData = useSelector(({ watchList }) => watchList.movieData);
+  // get watch list data
+  const watchListData = useSelector(({ watchList }) => watchList.movieData);
 
   const dispatch = useDispatch();
 
@@ -28,7 +28,7 @@ const Favorite = ({ movieData }) => {
 
   return (
     <>
-      {favoriteData[movieData.id] ? (
+      {watchListData[movieData.id] ? (
         <span
           className="favorite fill-red"
           role="button"

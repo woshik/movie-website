@@ -32,9 +32,3 @@
 .genre-heading .view-all a {
     font-size: 1.5rem;
 }
-
-@media only screen and (min-width: 1200px) {
-    .col-xl-2 {
-        width: 20%;
-    }
-}

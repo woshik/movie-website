@@ -79,6 +79,12 @@ button:focus {
     margin-top: 10rem !important;
 }
 
+@media only screen and (min-width: 1200px) {
+    .col-xl-2 {
+        width: 20%;
+    }
+}
+
 @media only screen and (max-width: 576px) {
     .d-sm-hide {
         display: none
