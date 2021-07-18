@@ -1,19 +1,36 @@
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
+
+// redux
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchMovieData } from '../redux/movieDetail';
+
 // components
 import Layout from '../components/Layout';
-import Banner from '../components/Banner';
+import MovieDetailCart from '../components/MovieDetailCard';
 
-// assets
-import bannerImage from '../assets/images/home-bannger.jpg';
+const MovieDetail = ({ match }) => {
+  // get movie Details
+  const movieDetailData = useSelector(({ movieDetail }) => movieDetail.detail);
+  const dispatch = useDispatch();
 
-const MovieDetail = () => (
-  <Layout>
-    <Banner
-      height="520px"
-      bannerImageSRC={bannerImage}
-      title="Welcome"
-      subTitle="Explore Millions of movies, Watch Anywhere."
-    />
-  </Layout>
-);
+  useEffect(() => {
+    dispatch(fetchMovieData(match.params.id));
+  }, []);
+
+  return (
+    <Layout>
+      <div className="container banner-less-margin">
+        <MovieDetailCart movieDetail={movieDetailData} />
+      </div>
+    </Layout>
+  );
+};
+
+MovieDetail.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.object,
+  }).isRequired,
+};
 
 export default MovieDetail;

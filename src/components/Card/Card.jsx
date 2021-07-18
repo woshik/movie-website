@@ -11,7 +11,7 @@ const Card = ({ data }) => (
   <div className="movie-card">
     <Favorite id={data.id} />
     <Link to={`/movie/${data.id}`}>
-      <img src={`https://image.tmdb.org/t/p/w300/${data.poster_path}`} alt="movie poster" />
+      <img src={`https://image.tmdb.org/t/p/w300${data.poster_path}`} alt="movie poster" />
     </Link>
     <div className="movie-info">
       <h6>
