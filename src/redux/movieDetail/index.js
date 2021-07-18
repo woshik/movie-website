@@ -88,7 +88,7 @@ const fetchMovieData = (movieId) => {
 
     if (movieError) {
       dispatch(requestComplete());
-      dispatch(failure(error));
+      dispatch(failure(movieError));
       return;
     }
 

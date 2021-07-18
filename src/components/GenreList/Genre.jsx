@@ -63,7 +63,7 @@ const Category = ({
 
       setMovies(data?.results?.slice(0, movieCountPerGenre) ?? demoData);
     }
-  }, [inView]);
+  }, [inView, queryParams]);
 
   return (
     <>
