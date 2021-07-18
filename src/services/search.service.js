@@ -1,8 +1,8 @@
 import Service from './service';
 
-export default class Discover extends Service {
+export default class Search extends Service {
   constructor(category = 'movie') {
-    const api = `discover/${category}`;
+    const api = `search/${category}`;
     super(api);
   }
 }

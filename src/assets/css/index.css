@@ -84,6 +84,10 @@ button:focus {
         display: none
     }
 
+    .d-sm-flx {
+        display: flex;
+    }
+
     .d-sm-inline-show {
         display: inline-block
     }

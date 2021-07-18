@@ -51,10 +51,10 @@ const NavBar = () => {
         </div>
       </nav>
       <div
-        className="search-mobile-wrapper d-flex align-items-center fixed-top w-100"
+        className="search-mobile-wrapper d-sm-flx align-items-center d-hide fixed-top w-100"
         style={{ top: `${mobileSearchBarShow ? 75 : 0}px` }}
       >
-        <SearchBar />
+        <SearchBar isSearchBarOpen={mobileSearchBarShow} />
       </div>
     </>
   );
