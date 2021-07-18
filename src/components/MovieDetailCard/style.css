@@ -5,6 +5,12 @@
     min-height: 400px;
 }
 
+.favorite-icon {
+    position: absolute;
+    top: 11px;
+    right: 11px;
+}
+
 .movie-title {
     color: #fff;
 }
@@ -13,7 +19,7 @@
     position: relative;
 }
 
-.transformers-content > p {
+.transformers-content>p {
     color: #dfdfdf;
     margin: 12px 0 30px;
     position: relative;
@@ -24,7 +30,7 @@
     width: 80%;
 }
 
-.transformers-content > p::before {
+.transformers-content>p::before {
     position: absolute;
     content: "";
     left: 0;

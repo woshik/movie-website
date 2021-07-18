@@ -23,5 +23,7 @@ module.exports = {
     'no-undef': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/forbid-prop-types': 'off',
+    'template-curly-spacing': 'off',
+    indent: 'off',
   },
 };

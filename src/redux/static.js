@@ -4,3 +4,5 @@ export const movieSortingList = [
 ];
 
 export const imagePath = process.env.REACT_APP_IMAGE_PATH;
+
+export const siteBaseURL = process.env.REACT_APP_BASE_URL;

@@ -1,5 +1,8 @@
 import PropTypes from 'prop-types';
 
+// component
+import Favorite from '../Favorite';
+
 // assets
 import { imagePath } from '../../redux/static';
 import defaultPoster from '../../assets/images/default-poster.jpg';
@@ -7,6 +10,9 @@ import './style.css';
 
 const MovieDetailCard = ({ movieDetail }) => (
   <div className="transformers-box">
+    <span className="favorite-icon">
+      {movieDetail.id ? <Favorite movieData={movieDetail} /> : null }
+    </span>
     <div className="row justify-content-center">
       <div className="col-lg-5 text-lg-left text-center mb-5">
         <img

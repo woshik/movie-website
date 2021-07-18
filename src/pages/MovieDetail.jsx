@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import ReactPlayer from 'react-player/youtube';
 
 // redux
 import { useSelector, useDispatch } from 'react-redux';
@@ -10,6 +11,9 @@ import { addToViewList } from '../redux/viewList';
 import Layout from '../components/Layout';
 import MovieDetailCart from '../components/MovieDetailCard';
 import MovieCard from '../components/MovieCard';
+
+// assets
+import { siteBaseURL } from '../redux/static';
 
 const MovieDetail = ({ match }) => {
   // get movie Details
@@ -45,7 +49,7 @@ const MovieDetail = ({ match }) => {
             <h2 className="mb-3">Top Cast</h2>
             <ul>
               {movieDetailData?.credits?.cast?.splice(0, 20)?.map((person) => (
-                <li key={person.id}>
+                <li key={person.credit_id}>
                   {person.name}
                   {' '}
                   -
@@ -59,7 +63,7 @@ const MovieDetail = ({ match }) => {
             <h2 className="mb-3">Crew</h2>
             <ul>
               {movieDetailData?.credits?.crew?.splice(0, 20)?.map((person) => (
-                <li key={person.id}>
+                <li key={person.credit_id}>
                   {person.name}
                   {' '}
                   -
@@ -69,6 +73,23 @@ const MovieDetail = ({ match }) => {
               ))}
             </ul>
           </div>
+        </div>
+
+        <div className="row mt-5">
+          <h2 className="mb-3">Videos</h2>
+          {movieDetailData?.videos?.results?.splice(0, 4)?.map((video) => (
+            <div
+              key={video.id}
+              data-id={video.id}
+              className="col-md-6 col-sm-12 mb-4"
+            >
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${video.key}?showinfo=0&enablejsapi=1&origin=${siteBaseURL}`}
+                width="100%"
+                controls
+              />
+            </div>
+          ))}
         </div>
 
         <div className="row mt-5">
