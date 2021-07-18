@@ -6,13 +6,14 @@ const Banner = ({
   height, bannerImageSRC, title, subTitle,
 }) => (
   <section
+    data-testid="banner-image"
     className="banner"
     style={{ backgroundImage: `url(${bannerImageSRC})`, height }}
   >
     <div className="container">
       <div className="title">
-        {title ? <h2>{title}</h2> : null}
-        {subTitle ? <h3>{subTitle}</h3> : null}
+        {title ? <h2 data-testid="title">{title}</h2> : null}
+        {subTitle ? <h3 data-testid="subTitle">{subTitle}</h3> : null}
       </div>
     </div>
   </section>
@@ -26,7 +27,7 @@ Banner.propTypes = {
 };
 
 Banner.defaultProps = {
-  title: 'john',
+  title: '',
   subTitle: '',
 };
 
