@@ -6,14 +6,15 @@
 ## Demo
 [http://18.209.226.53:5000/](http://18.209.226.53:5000/)
 
-## Tools and Technologies
+## Technologies Stack
 
-- Node.js (v14.16.0 LTS)
-- Express (v4.17.1)
-- mongodb (v4.2.8)
-- React (v17.0.2)
-
-
+- node.js (v14.16.0 LTS)
+- react (v17.0.2)
+- redux
+- react-redux
+- redux-thunk
+- react-router-dom
+- axios
 
 ## Available Scripts
 
