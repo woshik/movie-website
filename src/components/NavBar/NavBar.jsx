@@ -13,7 +13,7 @@ import searchIcon from '../../assets/images/icon/search.svg';
 import './style.css';
 
 const NavBar = () => {
-  const watchListIds = useSelector(({ watchList }) => watchList.ids);
+  const watchListData = useSelector(({ watchList }) => watchList.movieData);
   const [mobileSearchBarShow, setMobileSearchBarShow] = useState(false);
 
   const handleMobileSearchClick = () => {
@@ -44,7 +44,7 @@ const NavBar = () => {
             <Link to="/watchlist" className="btn nav-button">
               Watchlist
               <span className="badge bg-danger custom-badge ms-2">
-                {watchListIds.length}
+                {Object.keys(watchListData).length}
               </span>
             </Link>
           </div>

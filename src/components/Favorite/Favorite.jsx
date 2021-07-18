@@ -7,23 +7,28 @@ import { addToWatchList, removeFromWatchList } from '../../redux/watchList';
 // assets
 import './style.css';
 
-const Favorite = ({ id }) => {
+const Favorite = ({ movieData }) => {
   // get watch list ids
-  const ids = useSelector(({ watchList }) => watchList.ids);
+  const favoriteData = useSelector(({ watchList }) => watchList.movieData);
 
   const dispatch = useDispatch();
 
   const handleAddFavorite = () => {
-    dispatch(addToWatchList(id));
+    dispatch(addToWatchList({
+      id: movieData.id,
+      title: movieData.title,
+      poster_path: movieData.poster_path,
+      vote_average: movieData.vote_average,
+    }));
   };
 
   const handleRemoveFavorite = () => {
-    dispatch(removeFromWatchList(id));
+    dispatch(removeFromWatchList(movieData.id));
   };
 
   return (
     <>
-      {ids.includes(id) ? (
+      {favoriteData[movieData.id] ? (
         <span
           className="favorite fill-red"
           role="button"
@@ -70,7 +75,7 @@ const Favorite = ({ id }) => {
 };
 
 Favorite.propTypes = {
-  id: PropTypes.number.isRequired,
+  movieData: PropTypes.object.isRequired,
 };
 
 export default Favorite;

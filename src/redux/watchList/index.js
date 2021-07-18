@@ -9,30 +9,30 @@ const REMOVE_FROM_WATCH_LIST = 'REMOVE_FROM_WATCH_LIST';
 const LOCAL_STORAGE_KEY = 'favorite-ids';
 
 const initialState = {
-  ids: getDataFromLocalStorage(LOCAL_STORAGE_KEY, []),
+  movieData: getDataFromLocalStorage(LOCAL_STORAGE_KEY, {}),
 };
 
 const watchListReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_TO_WATCH_LIST: {
-      const ids = [...state.ids, payload];
-      setDataOnLocalStorage(LOCAL_STORAGE_KEY, ids);
+      // data will store as id and data pair
+      const movieData = { ...state.movieData, [payload.id]: payload };
+      setDataOnLocalStorage(LOCAL_STORAGE_KEY, movieData);
 
       return {
-        ids,
+        movieData,
       };
     }
     case REMOVE_FROM_WATCH_LIST: {
-      const index = state.ids.indexOf(payload);
-
-      // if id found remove that id, otherwise don't need to execute splice
-      if (index !== -1) {
-        state.ids.splice(index, 1);
-        setDataOnLocalStorage(LOCAL_STORAGE_KEY, state.ids);
+      // if id found delete that data, otherwise don't need to execute this code
+      if (state.movieData[payload.id]) {
+        // eslint-disable-next-line no-param-reassign
+        delete state.movieData[payload.id];
+        setDataOnLocalStorage(LOCAL_STORAGE_KEY, state.movieData);
       }
 
       return {
-        ids: [...state.ids],
+        movieData: { ...state.movieData },
       };
     }
     default:
@@ -42,14 +42,16 @@ const watchListReducer = (state = initialState, { type, payload }) => {
   }
 };
 
-const addToWatchList = (id) => ({
+const addToWatchList = (data) => ({
   type: ADD_TO_WATCH_LIST,
-  payload: id,
+  payload: data,
 });
 
 const removeFromWatchList = (id) => ({
   type: REMOVE_FROM_WATCH_LIST,
-  payload: id,
+  payload: {
+    id,
+  },
 });
 
 export { addToWatchList, removeFromWatchList };

@@ -10,7 +10,7 @@ import './style.css';
 
 const Card = ({ data }) => (
   <div className="movie-card">
-    {(data.id && !data.demo) ? <Favorite id={data.id} /> : null }
+    {(data.id && !data.demo) ? <Favorite movieData={data} /> : null }
     <Link to={(data.id && !data.demo) ? `/movie/${data.id}` : '/movies'}>
       <img src={data.poster_path ? `https://image.tmdb.org/t/p/w300${data.poster_path}` : defaultPoster} alt={data.title || 'movie poster'} />
     </Link>
