@@ -5,7 +5,7 @@ const SortMovie = ({ sortList, selectedValue, setSelectedValue }) => {
   const handleOnChange = (e) => {
     setSelectedValue(e.target.value);
   };
-  console.log(selectedValue);
+
   return (
     <>
       {sortList.map((sort) => (
