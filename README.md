@@ -1,5 +1,5 @@
 <h1 align='center'>
-    The Movie Database
+    Cefalo Movie Database
 </h1>
 
 
@@ -63,6 +63,7 @@ To fix eslint warning and error.
 2. Copy `.sample.env` file and past it in this directory as `.env.production`.
 3. Set the `REACT_APP_API_KEY` in the `.env.production` file. You will find the API and key information here, [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api) 
 4. Set the `REACT_APP_BASE_URL` as you origin server path.
+5. Run `num run build` to generate production build.
 5. Install serve or pm2 package. `npm install -g serve` OR `npm install -g pm2`
 6. Run one of those commend from your project directory, based on your package installation.
     - If you using serve package run this commend `serve -s build`. By default Server will run on 5000 port on your server.
