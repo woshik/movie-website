@@ -19,6 +19,7 @@ const Favorite = ({ movieData }) => {
       title: movieData.title,
       poster_path: movieData.poster_path,
       vote_average: movieData.vote_average,
+      time: new Date(),
     }));
   };
 

@@ -50,6 +50,9 @@ const SearchBar = ({ isSearchBarOpen }) => {
       cancelRequest();
       timer = setTimeout(handleAPIRequest, 300);
     } else {
+      // clear all timer when less than 2 corrector
+      // otherwise request will send with last 2 corrector
+      clearTimeout(timer);
       setSearchMovies([]);
     }
   }, [searchInput]);

@@ -49,7 +49,7 @@ See the eslint warning and error.
 To fix eslint warning and error.
 
 
-## Project Configuration & Install (Development)
+## Project Configuration & Installation (Development)
 
 1. Run `npm i` command on the project directory to install all packages.
 2. Copy `.sample.env` file and past it in this directory as `.env.development`.
@@ -57,7 +57,7 @@ To fix eslint warning and error.
 4. Set the `REACT_APP_BASE_URL` as you origin server path.
 5. Run `npm start`, By default project will start on [http://localhost:3000](http://localhost:3000) 
 
-## Project Configuration & Install (Production)
+## Project Configuration & Installation (Production)
 
 1. Run `npm i` command on the project directory to install all packages.
 2. Copy `.sample.env` file and past it in this directory as `.env.production`.
