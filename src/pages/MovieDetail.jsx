@@ -18,7 +18,7 @@ import { siteBaseURL } from '../redux/static';
 const MovieDetail = ({ match }) => {
   // get movie Details
   const movieDetailData = useSelector(({ movieDetail }) => movieDetail.detail);
-  const movieId = match.params.id;
+  const { id: movieId } = match.params;
   const dispatch = useDispatch();
 
   useEffect(() => {

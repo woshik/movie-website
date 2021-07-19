@@ -5,11 +5,13 @@ import {
 
 const ADD_TO_WATCH_LIST = 'ADD_TO_WATCH_LIST';
 const REMOVE_FROM_WATCH_LIST = 'REMOVE_FROM_WATCH_LIST';
+const CLEAN_UP_WATCH_LIST = 'CLEAN_UP_WATCH_LIST';
 
 const LOCAL_STORAGE_KEY = 'watchlist';
 
 const initialState = {
   movieData: getDataFromLocalStorage(LOCAL_STORAGE_KEY, {}),
+  removedMovieData: {},
 };
 
 const watchListReducer = (state = initialState, { type, payload }) => {
@@ -20,21 +22,38 @@ const watchListReducer = (state = initialState, { type, payload }) => {
       setDataOnLocalStorage(LOCAL_STORAGE_KEY, movieData);
 
       return {
+        ...state,
         movieData,
       };
     }
+
     case REMOVE_FROM_WATCH_LIST: {
+      const watchList = { ...state.movieData };
+      const removedList = { ...state.removedMovieData };
+
       // if id found delete that data, otherwise don't need to execute this code
-      if (state.movieData[payload.id]) {
-        // eslint-disable-next-line no-param-reassign
-        delete state.movieData[payload.id];
-        setDataOnLocalStorage(LOCAL_STORAGE_KEY, state.movieData);
+      if (watchList[payload.id]) {
+        // push data in the removed list, so that determine witch data removed
+        removedList[payload.id] = watchList[payload.id];
+
+        // delete from local store
+        delete watchList[payload.id];
+        setDataOnLocalStorage(LOCAL_STORAGE_KEY, watchList);
       }
 
       return {
-        movieData: { ...state.movieData },
+        movieData: watchList,
+        removedMovieData: removedList,
       };
     }
+
+    case CLEAN_UP_WATCH_LIST: {
+      return {
+        ...state,
+        removedMovieData: [],
+      };
+    }
+
     default:
       return {
         ...state,
@@ -54,6 +73,10 @@ const removeFromWatchList = (id) => ({
   },
 });
 
-export { addToWatchList, removeFromWatchList };
+const cleanUpDeleteData = () => ({
+  type: CLEAN_UP_WATCH_LIST,
+});
+
+export { addToWatchList, removeFromWatchList, cleanUpDeleteData };
 
 export default watchListReducer;
