@@ -34,6 +34,7 @@ const MovieDetail = ({ match }) => {
           title: movieDetailData.title,
           poster_path: movieDetailData.poster_path,
           vote_average: movieDetailData.vote_average,
+          time: new Date(),
         }),
       );
     }

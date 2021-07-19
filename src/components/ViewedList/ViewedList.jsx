@@ -16,7 +16,9 @@ const ViewedList = ({ movieCount, clearData }) => {
 
   const dispatch = useDispatch();
 
-  const viewedKey = Object.keys(viewedData);
+  const viewedKey = Object.keys(viewedData).sort(
+    (a, b) => new Date(viewedData[b].time) - new Date(viewedData[a].time),
+  );
 
   const handleClearAll = () => {
     dispatch(removeFromViewList());
