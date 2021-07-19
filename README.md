@@ -48,7 +48,16 @@ See the eslint warning and error.
 
 To fix eslint warning and error.
 
+## API Information
+- [https://www.themoviedb.org/documentation/api](https://www.themoviedb.org/documentation/api)
+- [https://developers.themoviedb.org/3/getting-started/introduction](https://developers.themoviedb.org/3/getting-started/introduction)
 
+## Available Routes
+- /movies - Genre based movie listing.
+- /movie/{id} - Movie detail page.
+- /genre/{id} - Specific genre based movie listing.
+- /watchlist - Watch list page or favorite movie page.
+- /viewed - Recently viewed movie page.
 ## Project Configuration & Installation (Development)
 
 1. Run `npm i` command on the project directory to install all packages.
